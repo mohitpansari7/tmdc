@@ -24,7 +24,7 @@ function MovieDetails() {
         console.log(url)
         axios.put(url, movie)
             .then((res) => {
-                console.log('Success', res)
+                console.log('Success')
                 setIsTitleEditable(false)
                 setIsStoryEditable(false)
             })
@@ -34,7 +34,6 @@ function MovieDetails() {
     }
 
     function handleTitleChange(e) {
-        console.log('inside-handleTitleChange')
         let newTitle = e.target.value
         setMovie( movie => {
             return { ...movie, title : newTitle}

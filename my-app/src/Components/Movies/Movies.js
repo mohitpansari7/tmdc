@@ -14,7 +14,6 @@ function Movies() {
 
   function clickHandler(event) {
     const goToMovieDetails = () => navigate(`/movieDetails/${event.target.textContent}`)
-    console.log(event)
     goToMovieDetails()
   }
   

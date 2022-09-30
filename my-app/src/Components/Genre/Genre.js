@@ -10,7 +10,6 @@ function Genre() {
     fetch('http://localhost:3000/movies')
     .then(res => res.json())
     .then(res => {
-        console.log(res)
         let result = []
         res.map(item => {
             item.genres.forEach(element => {

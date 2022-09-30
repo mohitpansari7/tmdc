@@ -12,14 +12,12 @@ function MovieByGenre() {
     .then(res => res.json())
     .then(res => {
         let result = res.filter(item => item.genres.includes(genre))
-        console.log(result)
         setMovies(result)
     })
   }, [genre])
   
   function clickHandler(event) {
     const goToMovieDetails = () => navigate(`/movieDetails/${event.target.textContent}`)
-    console.log(event)
     goToMovieDetails()
   }
 
