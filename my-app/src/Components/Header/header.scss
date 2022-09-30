@@ -1,0 +1,23 @@
+.headerContainer{
+    background-color: #c3b8b8;
+    display: flex;
+    justify-content: space-between;
+}
+
+.tabContainer{
+    margin-right: 150px;
+}
+.headerTabName{
+    font-size: 38px;
+    margin: 5px 15px 5px 15px;
+    cursor: pointer;
+}
+
+.headerTabName:hover{
+    background-color: #81869f;
+    border-radius: 6px;
+}
+
+.headerProfileIcon{
+    cursor: pointer;
+}
