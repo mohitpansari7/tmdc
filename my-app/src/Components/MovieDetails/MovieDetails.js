@@ -54,8 +54,8 @@ function MovieDetails() {
                 <img className="card-img-top" src={movie.posterurl} alt="Cardimagecap" />
                 <div className="card-body">
                     {isTitleEditable ? <div><input className='rounded' defaultValue={movie.title} onChange=
-                        {handleTitleChange} ></input><button className="tickButton" onClick={() => setIsTitleEditable(false)}>✓</button></div> : <h5 onDoubleClick={() => setIsTitleEditable(true)} className="card-title" id='movie-title' data-toggle="tooltip" data-placement="right" title="Click to edit">{movie.title}</h5>}
-                    {isStoryEditable ? <div className="textAreaContainer"><textarea className='styleTextarea rounded' defaultValue={movie.storyline} onChange={handleStoryChange}></textarea><button className="tickButton" onClick={() => setIsStoryEditable(false)}>✓</button></div> : <p className="card-text" id='movie-story' data-toggle="tooltip" data-placement="right" title="Click to edit" onDoubleClick={() => setIsStoryEditable(true)}>{movie.storyline}</p>}
+                        {handleTitleChange} ></input><button className="tickButton" onClick={() => setIsTitleEditable(false)}>✓</button></div> : <h5 onDoubleClick={() => setIsTitleEditable(true)} className="card-title" id='movie-title' data-toggle="tooltip" data-placement="right" title="Double-Click to edit">{movie.title}</h5>}
+                    {isStoryEditable ? <div className="textAreaContainer"><textarea className='styleTextarea rounded' defaultValue={movie.storyline} onChange={handleStoryChange}></textarea><button className="tickButton" onClick={() => setIsStoryEditable(false)}>✓</button></div> : <p className="card-text" id='movie-story' data-toggle="tooltip" data-placement="right" title="Double-Click to edit" onDoubleClick={() => setIsStoryEditable(true)}>{movie.storyline}</p>}
                     <button className="btn btn-primary" onClick={handleSave}>Save</button>
                 </div>
             </div>}
