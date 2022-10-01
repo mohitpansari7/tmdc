@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import './movieDetails.scss'
 import axios from 'axios'
@@ -10,15 +10,15 @@ function MovieDetails() {
     const [isTitleEditable, setIsTitleEditable] = useState(false)
     const [isStoryEditable, setIsStoryEditable] = useState(false)
 
-    const getMovieDetails = async () => {
+    const getMovieDetails = useCallback( async () => {
         const data = await ( await axios.get('http://localhost:3001/movieDetails', {params : { "movieName" : movieName }})).data
         setMovie(data[0])
-    }
+    }, [movieName])
 
     useEffect(() => {
         getMovieDetails()
-    }, [])
-
+    }, [getMovieDetails])
+ 
     function handleSave() {
         const url = `http://localhost:3001/updateMovie`
         axios.put(url, [movie])
