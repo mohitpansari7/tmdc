@@ -1,15 +1,19 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate} from 'react-router-dom'
+import axios from 'axios'
 import './movies.scss'
 
 function Movies() {
   const [movies, setMovies] = useState(null)
   const navigate= useNavigate()
 
+  const getMovieNames = async () => {
+    const data = await (await axios.get('http://localhost:3001/movieNames')).data
+    setMovies(data)
+  }
+  
   useEffect( () => {
-    fetch('http://localhost:3000/movies')
-    .then(res => res.json())
-    .then(res => setMovies(res))
+    getMovieNames()
   }, [])
 
   function clickHandler(event) {

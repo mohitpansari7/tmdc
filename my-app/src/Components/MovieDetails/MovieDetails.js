@@ -10,19 +10,18 @@ function MovieDetails() {
     const [isTitleEditable, setIsTitleEditable] = useState(false)
     const [isStoryEditable, setIsStoryEditable] = useState(false)
 
+    const getMovieDetails = async () => {
+        const data = await ( await axios.get('http://localhost:3001/movieDetails', {params : { "movieName" : movieName }})).data
+        setMovie(data[0])
+    }
+
     useEffect(() => {
-        fetch('http://localhost:3000/movies')
-            .then(res => res.json())
-            .then(res => {
-                let result = res.filter(item => item.title === movieName)
-                setMovie(...result)
-            })
-    }, [movieName])
+        getMovieDetails()
+    }, [])
 
     function handleSave() {
-        const url = `http://localhost:3000/movies/${movie.id}`
-        console.log(url)
-        axios.put(url, movie)
+        const url = `http://localhost:3001/updateMovie`
+        axios.put(url, [movie])
             .then((res) => {
                 console.log('Success')
                 setIsTitleEditable(false)

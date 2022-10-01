@@ -1,26 +1,20 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import axios from 'axios'
+
 import './genre.scss'
 
 function Genre() {
   const [genre, setGenre] = useState(null)
   const navigate = useNavigate()
 
+  const getGenres = async () => {
+    const data = await ( await axios.get('http://localhost:3001/genres')).data
+    setGenre(data)
+  }
+
   useEffect( () => {
-    fetch('http://localhost:3000/movies')
-    .then(res => res.json())
-    .then(res => {
-        let result = []
-        res.map(item => {
-            item.genres.forEach(element => {
-                if ( !result.includes(element) ){
-                    result.push(element)
-                }
-            });
-        return result
-        })
-        setGenre(result)
-    })
+    getGenres()
   }, [])
 
   function handleClick(event){
@@ -31,7 +25,7 @@ function Genre() {
   return (
     <div className='genreListContainer'>
         {
-            genre && genre.map( (item, index) => <li className='genreName' key={item} onClick={handleClick}>{item}</li>)
+            genre && genre.map( (item) => <li className='genreName' key={item} onClick={handleClick}>{item}</li>)
         }
     </div>
   )
